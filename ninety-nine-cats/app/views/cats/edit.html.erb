@@ -1,0 +1,30 @@
+<form action="<% cat_url(@cat) %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+
+
+  <label for="name">Cat's Name</label><br>
+    <input type="text" name="cat[name]" value ="<%= @cat.name %>">
+  <br><br>
+
+  <label for="sex">Cat Sex</label><br>M
+    <input type="radio" id="M"  value="M" name="cat[sex]" <%= @cat.sex == 'M' ? selected : '' %> >F
+    <input type="radio" id="F"  value="F" name="cat[sex]">
+  <br><br>
+
+  <label for="colors">Select the color of your cat! :)</label><br>
+  <select id="colors" name ="cat[color]">
+  <option disabled selected>choose your color</option>
+  <% Cat::CAT_COLORS.each do |color| %>
+    <option value="<%=color%>"> <%=color%> </option>
+  <% end %>
+  </select>
+  <br>
+  <br>
+  <label for="birthdate">Select the BIRTHDAY of your cat! :)</label><br>
+  <input type="date" id="birthdate" name="cat[birthdate]" value=<%=Date.today%> max =<%=Date.today%> >
+  <br><br>
+
+  <label for="description">Describe your cat in your own words! :)</label><br>
+  <textarea id="description" name="cat[description]" rows="10" cols="35">Enter cat description HERE</textarea>
+
+</form>
